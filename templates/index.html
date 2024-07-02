@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Audio Streaming</title>
+</head>
+<body>
+    <h1>Audio Streaming Example</h1>
+    <audio id="audioPlayer" controls>
+        <source id="audioSource" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <button id="download-button" name="test.mp3">download</button>
+
+    <script src="core.js"></script>
+    <script>
+        function downloadFile(fileName) {
+            document.location.href = `/api/download/${fileName}`
+        };
+    </script>
+</body>
+</html>
