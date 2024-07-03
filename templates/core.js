@@ -1,6 +1,6 @@
 
 function downloadFile(event) {
-  console.log(`loading: ${event.target.name}`);
+  console.log(`loading: ${event}`);
   document.location.href = `/api/download/${event.target.name}`;
 };
 
@@ -41,7 +41,7 @@ function addAudioToList(audioFile) {
   newButton.className = 'download-button';
   newButton.name = audioFile;
 
-  newAudio.addEventListener("click", downloadFile, false);
+  newButton.addEventListener("click", downloadFile, false);
 
   newDiv.appendChild(newButton);
 
@@ -57,7 +57,7 @@ const parentDOM = document.getElementById("audioList");
 
 document.addEventListener('DOMContentLoaded', () => {
   // Отримуємо всі елементи з класом 'download-button'
-  const downloadButtons = parentDOM.getElementsByClassName("test");
+  const downloadButtons = parentDOM.getElementsByClassName("download-button");
 
   // Перебираємо кожну кнопку
   downloadButtons.classList.forEach((button) => {
