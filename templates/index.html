@@ -1,25 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Audio Streaming</title>
+    <title>Аудіо Хост</title>
+    <link rel="stylesheet" href="static/index.css">
 </head>
 <body>
-    <h1>Audio Streaming Example</h1>
-    <audio id="audioPlayer" controls>
-        <source id="audioSource" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <button id="download-button" name="test.mp3">download</button>
-
-    <script src="core.js"></script>
+    <div class="header">
+        <h1>Audio Hub</h1>
+    </div>
+    <div class="auth-buttons">
+        <button id = "loginbutton" onclick="window.location.href = '/login'">Увійти</button>
+        <button id = "regbutton" onclick="window.location.href = '/register'">Зареєструватися</button>
+        <button id ="exitbutton" onclick="exit()" style="display: none;">Вихід</button>
+        <h2 id = "username"></h2>
+    </div>
+    <div class="main-content">
+        <h2>Ласкаво просимо до вашої музичної бібліотеки</h2>
+        <p>
+            Аудіо Хост - це ваш особистий простір для завантаження, зберігання та прослуховування улюблених аудіо файлів.
+            З нашою платформою ви можете легко організувати свою музичну бібліотеку та насолоджуватися музикою в будь-який час.
+        </p>
+        <button onclick="window.location.href = '/audiolist'">Завантажити аудіо</button>
+    </div>
     <script>
-        function downloadFile(fileName) {
-            document.location.href = `/api/download/${fileName}`
-        };
+        async function load(){
+            await fetch("/api/cookie", {
+                method: "GET"
+            })
+
+            const userinfo = await fetch("/api/login/getinfo", {
+                method: "GET"
+            })
+
+            const info = await userinfo.json();
+
+            if (info["login"] != "None") {
+                document.getElementById("username").innerHTML = info["login"]
+                document.getElementById("loginbutton").style.display = "none";
+                document.getElementById("regbutton").style.display = "none";
+                document.getElementById("exitbutton").style.display = "block";
+            }
+        }
+
+        async function exit(){
+            const res = await fetch("/api/login/delog", {
+                method: "POST"
+            })
+
+            if (res.status == 200){
+                window.location.href = "/"
+            }
+        }
+
+        load()
     </script>
 </body>
 </html>

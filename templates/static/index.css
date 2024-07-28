@@ -1,0 +1,115 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: #1db954;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+.auth-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.auth-buttons button {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 5px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 25px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.auth-buttons button:hover {
+    background-color: #fff;
+    color: #1db954;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.main-content p {
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+.main-content button {
+    background-color: #1db954;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.main-content button:hover {
+    background-color: #1aa34a;
+    transform: scale(1.05);
+}
+
+.list {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.list-item {
+    background: #282828;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 15px;
+    width: 45%;
+    max-width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.list-item:hover {
+    transform: scale(1.05);
+}
+
+.list-item p {
+    margin: 10px 0 0;
+    font-size: 1rem;
+}
