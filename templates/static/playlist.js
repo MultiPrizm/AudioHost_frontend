@@ -8,8 +8,8 @@ class Sound {
     document.location.href = `/api/download/${this.endpoint}`;
   }
 
-  add_to_playlist = () => {
-    fetch(`/api/info/playlist/add/${this.id}`, { method: "POST" });
+  del_from_playlist = () => {
+    fetch(`/api/info/playlist/del/${this.id}`, { method: "POST" });
   }
 }
 
@@ -78,7 +78,7 @@ class Page {
     const downloadButton = document.createElement('button');
     const listButton = document.createElement('button');
 
-    listButton.textContent = 'add to list';
+    listButton.textContent = 'remove from list';
 
     downloadButton.textContent = 'download';
     const newSoung = new Sound(audioFile, id);
@@ -86,7 +86,7 @@ class Page {
     this.audiolist.push(newSoung);
 
     downloadButton.addEventListener("click", newSoung.downloadFile, false);
-    listButton.addEventListener("click", newSoung.add_to_playlist, false);
+    listButton.addEventListener("click", newSoung.del_from_playlist, false);
 
     const newText = document.createElement('p');
     newText.textContent = namefile;
@@ -101,7 +101,7 @@ class Page {
 const audiolist = []
 
 async function LoadPage(page, hide = true) {
-  const response = await fetch(`/api/info/list/${page}`, { method: "GET" });
+  const response = await fetch(`/api/info/playlist`, { method: "GET" });
   const data = await response.json();
   console.log(data);
 
